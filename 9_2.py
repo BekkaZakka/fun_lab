@@ -6,7 +6,7 @@ def generate_data(num):
     return data_list, data_tuple, data_dict
 
 
-my_list, my_tuple, my_dict = generate_data(10)
+my_list, my_tuple, my_dict = generate_data(5)
 print("тізім: ", my_list)
 print("кортеж: ", my_tuple)
 print("сөздік: ", my_dict)
