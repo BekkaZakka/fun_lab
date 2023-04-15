@@ -83,11 +83,11 @@ def matrix_operation(matrix1, matrix2, operation):
     return result
 
 result = matrix_operation(matrix1, matrix2, "+")
-print(result)  
+print(result)
 
 result = matrix_operation(matrix1, matrix2, "-")
-print(result) 
+print(result)
 
 result = matrix_operation(matrix1, matrix2, "*")
-print(result) 
+print(result)
 
