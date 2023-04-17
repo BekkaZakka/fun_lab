@@ -11,5 +11,5 @@ def g(x):
 
 h = func(f, g)
 
-result = h(4)
+result = h(6)
 print(result)
