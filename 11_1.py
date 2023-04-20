@@ -1,22 +1,27 @@
+import pandas as pd
 import random
-from pytube import YouTube
-import moviepy.editor as mp
 
-# Запрашиваем ссылку на видео
-url = input("Введите ссылку на видео: ")
+# Создаем случайную таблицу с помощью pandas
+data = pd.DataFrame({
+    'Name': ['Alice', 'Bob', 'Charlie', 'Dave', 'Eve'],
+    'Age': [random.randint(18, 30) for _ in range(5)],
+    'Score': [random.uniform(0, 100) for _ in range(5)]
+})
 
-# Загружаем видео
-yt = YouTube(url)
-stream = yt.streams.filter(progressive=True).first()
-stream.download()
+# Выводим исходную таблицу
+print('Исходная таблица:\n', data)
 
-# Получаем путь к загруженному видео
-video_path = stream.default_filename
+# Изменяем возраст некоторых студентов
+data.loc[data['Name'] == 'Alice', 'Age'] = random.randint(30, 50)
+data.loc[data['Name'] == 'Charlie', 'Age'] = random.randint(30, 50)
 
-# Выбираем случайный промежуток времени (от 10 до 30 секунд)
-start_time = random.randint(10, 30)
-end_time = start_time + 10
+# Выводим измененную таблицу
+print('\nИзмененная таблица:\n', data)
 
-# Вырезаем фрагмент из видео
-clip = mp.VideoFileClip(video_path).subclip(start_time, end_time)
-clip.preview()
+# Считаем средний балл студентов младше 30 лет
+mean_score = data.loc[data['Age'] < 30, 'Score'].mean()
+print('\nСредний балл студентов младше 30 лет:', mean_score)
+
+# Выбираем случайного студента и выводим его данные
+random_student = data.sample()
+print('\nСлучайный студент:\n', random_student.to_string(index=False))
